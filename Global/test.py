@@ -138,6 +138,7 @@ if __name__ == "__main__":
 
         if opt.NL_use_mask:
             mask_name = mask_loader[i]
+            print("Now U are using masks ")
             mask = Image.open(os.path.join(opt.test_mask, mask_name)).convert("RGB")
             if opt.mask_dilation != 0:
                 kernel = np.ones((3,3),np.uint8)
@@ -152,6 +153,7 @@ if __name__ == "__main__":
             input = img_transform(input)
             input = input.unsqueeze(0)
         else:
+            print("Now U are not  using masks ")
             if opt.test_mode == "Scale":
                 input = data_transforms(input, scale=True)
             if opt.test_mode == "Full":
